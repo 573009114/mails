@@ -6,9 +6,10 @@ package main
 */
 
 import (
-	"strconv"
-	"fmt"
 	"flag"
+	"fmt"
+	"strconv"
+
 	"github.com/spf13/viper"
 
 	"gopkg.in/gomail.v2"
@@ -17,9 +18,9 @@ import (
 func server(mailTo []string, ccTo []string, subject, body string, args ...string) error {
 	//定义邮箱服务器连接信息，如果是网易邮箱 pass填密码，qq邮箱填授权码
 	mailConn := map[string]string{
-		"user": "dm-cai-devops-itest@kingsoft.com",
+		"user": "dmmo@mail.com",
 		"pass": "",
-		"host": "smtp.kingsoft.com",
+		"host": "smtp.mail.com",
 		"port": "25",
 	}
 
@@ -40,10 +41,10 @@ func server(mailTo []string, ccTo []string, subject, body string, args ...string
 }
 
 func main() {
-	mailTo := []string{"dm-cai-tech@kingsoft.com"}
-	ccTo := []string{"haowen1@kingsoft.com","w_qiaoliangliang@kingsoft.com","w_zoujunyao@kingsoft.com"}
+	mailTo := []string{"dm-tech@mail.com"}
+	ccTo := []string{"zhaosan@mail.com", "zhaowu@mail.com", "lisi@mail.com"}
 
-	subject :=  flag.String("s", "subject", "主题")
+	subject := flag.String("s", "subject", "主题")
 	body := flag.String("b", "body", "收件内容")
 	flag.Parse()
 	err := server(mailTo, ccTo, *subject, *body)
@@ -53,4 +54,3 @@ func main() {
 	}
 	fmt.Println("send successfully")
 }
-
