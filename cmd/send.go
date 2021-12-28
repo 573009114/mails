@@ -1,7 +1,7 @@
 package main
 
 /*
-  @Author : lanyulei
+  @Author : haowen
   @Desc : 发送邮件
 */
 
@@ -28,7 +28,7 @@ func server(mailTo []string, ccTo []string, subject, body string, args ...string
 
 	m := gomail.NewMessage()
 
-	m.SetHeader("From", m.FormatAddress(mailConn["user"], viper.GetString("工单完结"))) //这种方式可以添加别名，即“XX官方”
+	m.SetHeader("From", m.FormatAddress(mailConn["user"], viper.GetString("XX官方"))) //这种方式可以添加别名，即“XX官方”
 	m.SetHeader("To", mailTo...)                                                    //发送给多个用户
 	m.SetHeader("Cc", ccTo...)                                                      //发送给多个用户
 	m.SetHeader("Subject", subject)                                                 //设置邮件主题
